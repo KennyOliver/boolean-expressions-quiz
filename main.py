@@ -1,24 +1,30 @@
 from VividHues import Clr
 import random
 #====================
-first_val = random.choice([True,False])
-second_val = random.choice([True,False])
+first_val = random.choice([False,True])
+second_val = random.choice([False,True])
 operators = ["AND","OR","XOR","NOT"]
 rand_operator = random.choice(operators)
+all_not = random.choice([False,True])
 
 if rand_operator == "AND":
-  print(first_val,rand_operator,second_val)
+  question = f"{first_val} {rand_operator} {second_val}"
   actual_result = first_val and second_val
 elif rand_operator == "OR":
-  print(first_val,rand_operator,second_val)
+  question = f"{first_val} {rand_operator} {second_val}"
   actual_result = first_val or second_val
 elif rand_operator == "XOR":
-  print(first_val,rand_operator,second_val)
+  question = f"{first_val}  {second_val}"
   actual_result = first_val ^ second_val
 elif rand_operator == "NOT":
-  print(rand_operator,first_val)
+  question = f"{rand_operator} {first_val}"
   actual_result = not first_val
 
+if all_not is True:
+  actual_result = not actual_result
+  question = f"NOT ({question})"
+
+print(question)
 user_answer = input("Enter your answer\n\t--> ").title()
 
 if user_answer == str(actual_result):
